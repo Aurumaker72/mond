@@ -5,4 +5,4 @@ pub mod generator;
 pub mod interpreter;
 
 
-pub type Block = Vec<Instruction>;
+pub type Program = Vec<Instruction>;

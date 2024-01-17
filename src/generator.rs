@@ -1,6 +1,6 @@
 use crate::tokenizer::Token;
 use crate::tokenizer::Token::{Identifier, Keyword};
-use crate::Block;
+use crate::Program;
 
 #[derive(Clone, Debug, Hash)]
 pub enum Register {
@@ -40,7 +40,7 @@ pub enum Instruction {
     Div(Register, Register, Register),
 }
 
-pub fn generate(token_bag: Vec<Vec<Token>>) -> Vec<Block> {
+pub fn generate(token_bag: Vec<Vec<Token>>) -> Program {
     let mut blocks = vec![];
 
     for tokens in token_bag {
