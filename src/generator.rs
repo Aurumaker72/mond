@@ -25,6 +25,16 @@ pub enum Instruction {
 
     // Jumps to the specified address
     Jmp(u64),
+    // Jumps to the specified address if GPR0 is greater than GPR1
+    Jg(u64),
+    // Jumps to the specified address if GPR0 is greater than or equal to GPR1
+    Jge(u64),
+    // Jumps to the specified address if GPR0 is less than GPR1
+    Jl(u64),
+    // Jumps to the specified address if GPR0 is less than or equal to GPR1
+    Jle(u64),
+    // Jumps to the specified address if GPR0 is equal to GPR1
+    Jeq(u64),
     // Returns to the address of the last jmp instruction
     Ret,
     // Copies the current address into GPR0
