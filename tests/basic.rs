@@ -1,5 +1,5 @@
 use mond::generator::{Instruction, Register};
-use mond::interpreter::run;
+use mond::interpreter::{Interpreter};
 use mond::tokenizer::tokenize;
 
 #[test]
@@ -9,11 +9,11 @@ fn it_works() {
         println!("{:?}", token);
     }
 
-    let program = vec![
+    let mut interpreter = Interpreter::default();
+    interpreter.execute(vec![
         Instruction::Init(Register::GPR0, 0),
         Instruction::Init(Register::GPR1, 7),
         Instruction::Init(Register::GPR2, 3),
         Instruction::Add(Register::GPR0, Register::GPR1, Register::GPR2),
-    ];
-    run(program);
+    ]);
 }
