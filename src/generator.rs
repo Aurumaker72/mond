@@ -2,7 +2,7 @@ use crate::tokenizer::Token;
 use crate::tokenizer::Token::{Identifier, Keyword};
 use crate::Program;
 
-#[derive(Clone, Debug, Hash)]
+#[derive(Clone, Debug, Hash, Eq, PartialEq)]
 pub enum Register {
     GPR0,
     GPR1,

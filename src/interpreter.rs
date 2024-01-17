@@ -21,15 +21,33 @@ pub fn run(program: Program) {
         let instruction = program[interpreter.address as usize].clone();
 
         match instruction {
-            Instruction::Copy(dst, src) => {}
-            Instruction::Init(dst, val) => {}
-            Instruction::Jmp(addr) => {}
-            Instruction::Ret => {}
-            Instruction::Addr => {}
-            Instruction::Add(_, _, _) => {}
-            Instruction::Sub(_, _, _) => {}
-            Instruction::Mul(_, _, _) => {}
-            Instruction::Div(_, _, _) => {}
+            Instruction::Copy(dst, src) => {
+                interpreter.registers.insert(dst, interpreter.registers[&src]);
+            }
+            Instruction::Init(dst, val) => {
+                interpreter.registers.insert(dst, val);
+            }
+            Instruction::Jmp(addr) => {
+                interpreter.address = addr - 1;
+            }
+            Instruction::Ret => {
+                todo!()
+            }
+            Instruction::Addr => {
+                interpreter.registers.insert(Register::GPR0, interpreter.address);
+            }
+            Instruction::Add(out, reg1, reg2) => {
+                interpreter.registers.insert(out, interpreter.registers[&reg1] + interpreter.registers[&reg2]);
+            }
+            Instruction::Sub(out, reg1, reg2) => {
+                interpreter.registers.insert(out, interpreter.registers[&reg1] - interpreter.registers[&reg2]);
+            }
+            Instruction::Mul(out, reg1, reg2) => {
+                interpreter.registers.insert(out, interpreter.registers[&reg1] * interpreter.registers[&reg2]);
+            }
+            Instruction::Div(out, reg1, reg2) => {
+                interpreter.registers.insert(out, interpreter.registers[&reg1] / interpreter.registers[&reg2]);
+            }
         }
 
         interpreter.address += 1;
