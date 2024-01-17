@@ -5,12 +5,11 @@ use std::ptr::addr_of;
 
 #[derive(Default, Debug)]
 pub struct Interpreter {
-    registers: HashMap<Register, u64>,
-    address: u64,
+    pub registers: HashMap<Register, i64>,
+    pub address: u64,
 }
 
 impl Interpreter {
-
     pub fn execute(&mut self, program: Program) {
         loop {
             if self.address >= program.len() as u64 {
@@ -34,7 +33,7 @@ impl Interpreter {
                     todo!()
                 }
                 Instruction::Addr => {
-                    self.registers.insert(Register::GPR0, self.address);
+                    self.registers.insert(Register::GPR0, self.address as i64);
                 }
                 Instruction::Add(out, reg1, reg2) => {
                     self.registers.insert(out, self.registers[&reg1] + self.registers[&reg2]);

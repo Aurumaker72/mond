@@ -21,7 +21,7 @@ pub enum Instruction {
     // Copies register contents
     Copy(Register, Register),
     // Initializes a register with the specified value
-    Init(Register, u64),
+    Init(Register, i64),
 
     // Jumps to the specified address
     Jmp(u64),
