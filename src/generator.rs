@@ -1,8 +1,9 @@
 use crate::tokenizer::Token;
 use crate::tokenizer::Token::{Identifier, Keyword};
 use crate::Program;
+use strum_macros::EnumIter;
 
-#[derive(Clone, Debug, Hash, Eq, PartialEq)]
+#[derive(Clone, Debug, Hash, Eq, PartialEq, EnumIter)]
 pub enum Register {
     GPR0,
     GPR1,
@@ -23,7 +24,7 @@ pub enum Instruction {
     // Initializes a register with the specified value
     Init(Register, i64),
 
-    // Jumps to the specified address
+    // Jumps to the specified address, pushing the address to the callstack
     Jmp(u64),
     // Jumps to the specified address if GPR0 is greater than GPR1
     Jg(u64),
@@ -36,6 +37,7 @@ pub enum Instruction {
     // Jumps to the specified address if GPR0 is equal to GPR1
     Jeq(u64),
     // Returns to the address of the last jmp instruction
+    // If called with empty callstack, exits the program
     Ret,
     // Copies the current address into GPR0
     Addr,

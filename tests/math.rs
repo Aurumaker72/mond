@@ -3,7 +3,7 @@ use mond::interpreter::Interpreter;
 
 #[test]
 pub fn addition() {
-    let mut interpreter = Interpreter::default();
+    let mut interpreter = Interpreter::new();
     interpreter.execute(vec![
         Instruction::Init(Register::GPR0, 0),
         Instruction::Init(Register::GPR1, 7),
@@ -15,7 +15,7 @@ pub fn addition() {
 
 #[test]
 pub fn subtraction() {
-    let mut interpreter = Interpreter::default();
+    let mut interpreter = Interpreter::new();
     interpreter.execute(vec![
         Instruction::Init(Register::GPR0, 0),
         Instruction::Init(Register::GPR1, 7),
@@ -27,7 +27,7 @@ pub fn subtraction() {
 
 #[test]
 pub fn multiply() {
-    let mut interpreter = Interpreter::default();
+    let mut interpreter = Interpreter::new();
     interpreter.execute(vec![
         Instruction::Init(Register::GPR0, 0),
         Instruction::Init(Register::GPR1, 7),
@@ -39,7 +39,7 @@ pub fn multiply() {
 
 #[test]
 pub fn divide() {
-    let mut interpreter = Interpreter::default();
+    let mut interpreter = Interpreter::new();
     interpreter.execute(vec![
         Instruction::Init(Register::GPR0, 0),
         Instruction::Init(Register::GPR1, 8),
