@@ -28,9 +28,7 @@ impl Interpreter {
     pub fn execute(&mut self, program: Program) {
         loop {
             if self.address >= program.len() as u64 {
-                println!("Program finished");
-                println!("{:?}", self);
-                return;
+                break;
             }
             let instruction = program[self.address as usize].clone();
 
@@ -99,5 +97,8 @@ impl Interpreter {
 
             self.address += 1;
         }
+
+        println!("Execution terminated");
+        println!("{:?}", self);
     }
 }
