@@ -1,5 +1,4 @@
-use mond::generator::{Instruction, Register};
-use mond::interpreter::Interpreter;
+use mond::interpreter::{Instruction, Interpreter, Register};
 
 #[test]
 pub fn func() {

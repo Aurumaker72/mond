@@ -1,4 +1,4 @@
-use crate::generator::Instruction;
+use crate::interpreter::Instruction;
 
 pub mod tokenizer;
 pub mod generator;
